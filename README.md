@@ -108,6 +108,8 @@ When your container exposes only one port, nginx-proxy will default to this port
 
 If you need to specify a different port, you can set a `VIRTUAL_PORT` env var to select a different one. This variable cannot be set to more than one port.
 
+`VIRTUAL_PORT` supports a comma seperated list of key value pair syntax `hostPort:containerPort` or `containerPort` only. E.g. `VIRTUAL_PORT=443:80,3000,4000:8086`, this will expose containter port 80 to host port 443, 3000 to 3000 and container port 8086 to host port 4000.
+
 For each host defined into `VIRTUAL_HOST`, the associated virtual port is retrieved by order of precedence:
 1. From the `VIRTUAL_PORT` environment variable
 1. From the container's exposed port if there is only one
